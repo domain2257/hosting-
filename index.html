@@ -1,0 +1,191 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Get free domain and web hosting - Make your website live for free">
+    <title>Free Domain Platform</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <h1 class="logo"><i class="fas fa-globe"></i> FreeDomain</h1>
+            <div id="navLinks">
+                <button onclick="showLogin()" class="nav-btn">Login</button>
+                <button onclick="showRegister()" class="nav-btn primary">Sign Up</button>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section id="homeSection" class="section">
+            <div class="container">
+                <div class="hero">
+                    <h2>Launch Your Website for Free</h2>
+                    <p>Register easily, choose your preferred domain, and upload your website instantly</p>
+                    <button onclick="showRegister()" class="cta-btn">Get Started</button>
+                </div>
+                
+                <div class="features">
+                    <div class="feature-card">
+                        <div class="icon-box">🌐</div>
+                        <h3>Free Domain</h3>
+                        <p>Get a custom domain with your choice of extension</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="icon-box">📁</div>
+                        <h3>File Upload</h3>
+                        <p>Upload HTML, CSS, JS and other files easily</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="icon-box">⚡</div>
+                        <h3>Instant Live</h3>
+                        <p>Your site goes live immediately after upload</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="icon-box">📱</div>
+                        <h3>Responsive</h3>
+                        <p>Perfect display on all devices</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="registerSection" class="section hidden">
+            <div class="container">
+                <div class="form-container">
+                    <h2>Create New Account</h2>
+                    <form id="registerForm">
+                        <div class="form-group">
+                            <label><i class="fas fa-envelope"></i> Email</label>
+                            <input type="email" id="regEmail" placeholder="your@email.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label><i class="fas fa-lock"></i> Password</label>
+                            <input type="password" id="regPassword" placeholder="Enter password" required>
+                        </div>
+                        <button type="submit" class="btn primary">Register</button>
+                    </form>
+                    <p class="form-footer">
+                        Already have an account? 
+                        <a href="#" onclick="showLogin()">Login</a>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="loginSection" class="section hidden">
+            <div class="container">
+                <div class="form-container">
+                    <h2>Login</h2>
+                    <form id="loginForm">
+                        <div class="form-group">
+                            <label><i class="fas fa-envelope"></i> Email</label>
+                            <input type="email" id="loginEmail" placeholder="your@email.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label><i class="fas fa-lock"></i> Password</label>
+                            <input type="password" id="loginPassword" placeholder="Enter password" required>
+                        </div>
+                        <button type="submit" class="btn primary">Login</button>
+                    </form>
+                    <p class="form-footer">
+                        New user? 
+                        <a href="#" onclick="showRegister()">Sign up</a>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="dashboardSection" class="section hidden">
+            <div class="container">
+                <div class="dashboard">
+                    <div class="dashboard-header">
+                        <h2><i class="fas fa-tachometer-alt"></i> Dashboard</h2>
+                        <button onclick="logout()" class="btn logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</button>
+                    </div>
+                    
+                    <div id="domainSection">
+                        <div class="card">
+                            <h3><i class="fas fa-search"></i> Search Your Domain</h3>
+                            <div id="domainClaim">
+                                <div class="domain-search-container">
+                                    <div class="search-box">
+                                        <input type="text" id="subdomainInput" placeholder="Search domain..." class="domain-search-input">
+                                        <div class="extension-selector">
+                                            <select id="extensionSelect" class="extension-dropdown">
+                                                <option value=".com">.com</option>
+                                                <option value=".net">.net</option>
+                                                <option value=".org">.org</option>
+                                                <option value=".io">.io</option>
+                                                <option value=".dev">.dev</option>
+                                                <option value=".app">.app</option>
+                                                <option value=".co">.co</option>
+                                                <option value=".xyz">.xyz</option>
+                                                <option value=".site">.site</option>
+                                                <option value=".online">.online</option>
+                                                <option value=".tech">.tech</option>
+                                                <option value=".store">.store</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <button onclick="checkSubdomain()" class="btn check-btn">
+                                        <i class="fas fa-search"></i> Check
+                                    </button>
+                                </div>
+                                <div id="subdomainStatus"></div>
+                                <button onclick="claimSubdomain()" class="btn primary claim-btn" id="claimBtn" style="display:none">
+                                    <i class="fas fa-check-circle"></i> Claim Domain
+                                </button>
+                            </div>
+                            <div id="domainInfo" style="display:none">
+                                <div class="domain-info-box">
+                                    <p>Your domain: <strong id="userSubdomain"></strong></p>
+                                    <a id="domainLink" href="#" target="_blank" class="btn visit-btn">
+                                        <i class="fas fa-external-link-alt"></i> Visit Website
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="uploadSection" style="display:none">
+                        <div class="card">
+                            <h3><i class="fas fa-cloud-upload-alt"></i> Upload Files</h3>
+                            <form id="uploadForm">
+                                <div class="upload-area">
+                                    <i class="fas fa-cloud-upload-alt upload-icon"></i>
+                                    <p>Choose files or drag & drop here</p>
+                                    <input type="file" id="fileInput" multiple required>
+                                    <label for="fileInput" class="file-label">Select Files</label>
+                                </div>
+                                <button type="submit" class="btn primary upload-btn">
+                                    <i class="fas fa-upload"></i> Upload
+                                </button>
+                            </form>
+                            
+                            <div class="file-list">
+                                <h4><i class="fas fa-folder-open"></i> Uploaded Files</h4>
+                                <div id="filesList"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Free Domain Platform - Free web hosting for everyone</p>
+        </div>
+    </footer>
+
+    <div id="notification" class="notification"></div>
+
+    <script type="module" src="script.js"></script>
+</body>
+</html>
